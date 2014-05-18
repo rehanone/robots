@@ -47,3 +47,10 @@ INPUT AND OUTPUT
 **Expected Output**:  
 	1 3 N  
 
+BUILD
+-----
+**Maven**
+    mvn clean install
+    
+**Gradle**
+    gradle run

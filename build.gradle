@@ -1,0 +1,25 @@
+version = '0.0.1-SNAPSHOT'
+
+apply plugin: 'java'
+
+repositories{
+    mavenCentral()
+    mavenLocal()
+}
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'robots', 'Implementation-Version': version
+    }
+}
+
+dependencies{
+    compile 'org.slf4j:slf4j-api:1.7.6'
+    testCompile "junit:junit:4.11"
+}
+
+task run(type: JavaExec, dependsOn: build) {
+    main = 'com.example.robots.Runner'
+    classpath sourceSets.main.runtimeClasspath
+    classpath configurations.runtime
+}
