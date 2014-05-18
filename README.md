@@ -49,8 +49,9 @@ INPUT AND OUTPUT
 
 BUILD
 -----
-**Maven**
+**Maven:**
     mvn clean install
     
-**Gradle**
+**Gradle:**
     gradle run
+    gradle shadowJar (build jar with dependencies)

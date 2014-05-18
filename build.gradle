@@ -1,6 +1,19 @@
 version = '0.0.1-SNAPSHOT'
 
+project.set("mainClass", "com.example.robots.Runner")
+
 apply plugin: 'java'
+apply plugin: 'shadow'
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:0.8'
+    }
+}
+
 
 repositories{
     mavenCentral()
@@ -9,7 +22,8 @@ repositories{
 
 jar {
     manifest {
-        attributes 'Implementation-Title': 'robots', 'Implementation-Version': version
+        attributes 'Main-Class': project.mainClass,
+                'Implementation-Title': 'robots', 'Implementation-Version': version
     }
 }
 
@@ -19,7 +33,7 @@ dependencies{
 }
 
 task run(type: JavaExec, dependsOn: build) {
-    main = 'com.example.robots.Runner'
+    main = project.mainClass
     classpath sourceSets.main.runtimeClasspath
     classpath configurations.runtime
 }
